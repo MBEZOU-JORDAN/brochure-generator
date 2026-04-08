@@ -1,0 +1,16 @@
+[project]
+name = "brochure-generator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "gradio>=6.11.0",
+    "groq>=1.1.2",
+    "httpx>=0.28.1",
+    "huggingface-hub>=1.9.2",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.2",
+    "streamlit>=1.56.0",
+]
