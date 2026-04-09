@@ -1,7 +1,8 @@
+import asyncio
 from duckduckgo_search import DDGS
 from app.schemas.schemas import SearchResult
 
-def search_company(query: str, max_results: int = 6) -> list[SearchResult]:
+async def search_company(query: str, max_results: int = 6) -> list[SearchResult]:
     """
     Recherche web via DuckDuckGo — zéro API key, zéro coût.
     
@@ -12,13 +13,18 @@ def search_company(query: str, max_results: int = 6) -> list[SearchResult]:
     meilleure qualité pour les agents AI. Trigger : si DDG bloque (rate limit
     ou résultats vides répétés). Avantage : conçu pour les LLM pipelines.
     """
-    enriched_query = f"{query} official website"
-    
-    try:
-        with DDGS() as ddgs:
-            raw_results = list(ddgs.text(enriched_query, max_results=max_results))
-    except Exception as e:
-        raise RuntimeError(f"Recherche DuckDuckGo échouée : {e}")
+    # On définit une fonction interne synchrone pour DDGS
+    def sync_search():
+        enriched_query = f"{query} official website"
+        try:
+            with DDGS() as ddgs:
+                return list(ddgs.text(enriched_query, max_results=max_results))
+        except Exception as e:
+            print(f"Erreur DDG: {e}")
+            return []
+
+    # On lance la recherche dans un thread séparé pour ne pas bloquer l'async
+    raw_results = await asyncio.to_thread(sync_search)
     
     # Filtrer les résultats non-pertinents (Wikipedia, réseaux sociaux)
     skip_domains = {"wikipedia.org", "facebook.com", "linkedin.com", "twitter.com", "x.com"}

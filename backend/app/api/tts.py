@@ -1,6 +1,6 @@
 import base64
 from fastapi import APIRouter, HTTPException
-from app.schemas import TTSRequest, TTSResponse
+from app.schemas.schemas import TTSRequest, TTSResponse
 from app.services.tts_service import synthesize_speech
 
 router = APIRouter(prefix="/api/tts", tags=["tts"])

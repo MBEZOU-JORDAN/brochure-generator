@@ -1,0 +1,24 @@
+services:
+
+  backend:
+    build: ./backend
+    container_name: brochure-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build: ./frontend
+    container_name: brochure-frontend
+    ports:
+      - "5500:5500"
+    depends_on:
+      - backend
+    restart: unless-stopped

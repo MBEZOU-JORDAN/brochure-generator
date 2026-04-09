@@ -16,6 +16,7 @@ dependencies = [
     "edge-tts>=6.1.0",
     "huggingface_hub>=0.24.0",
     "pillow>=10.0.0",
+    "ddgs>=9.13.0",
 ]
 
 [build-system]

@@ -77,7 +77,7 @@ brochure-pro/
 │       ├── main.py
 │       ├── config.py
 │       ├── schemas.py
-│       ├── routers/        # search · brochure · tts · flyer
+│       ├── api/        # search · brochure · tts · flyer
 │       └── services/       # web_search · scraper · llm · tts · image
 └── frontend/
     ├── Dockerfile
