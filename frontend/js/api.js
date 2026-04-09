@@ -5,7 +5,7 @@
  * Si l'URL backend change, on modifie uniquement ce fichier.
  */
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://huggingface.co/spaces/Jordan001237/brochure-generator";
 
 /**
  * searchCompany — Recherche DuckDuckGo via le backend
