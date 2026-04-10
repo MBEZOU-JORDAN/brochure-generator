@@ -9,6 +9,7 @@ app = FastAPI(
     title="BrochureAI Pro",
     description="Génère des brochures professionnelles à partir d'une URL ou d'un nom d'entreprise",
     version="2.0.0",
+    root_path="",
 )
 
 # ── CORS ───────────────────────────────────────────────────────────────────────
@@ -39,6 +40,9 @@ app.include_router(flyer.router)
 def health():
     return {"status": "ok", "version": "2.0.0"}
 
+@app.get("/")
+async def root():
+    return {"message": "Brochure Generator API is running!"}
 
 # ── Dev server ─────────────────────────────────────────────────────────────────
 if __name__ == "__main__":

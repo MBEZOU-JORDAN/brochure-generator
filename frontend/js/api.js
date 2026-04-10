@@ -5,7 +5,7 @@
  * Si l'URL backend change, on modifie uniquement ce fichier.
  */
 
-const API_BASE = "https://huggingface.co/spaces/Jordan001237/brochure-generator";
+const API_BASE = "https://jordan001237-brochure-generator.hf.space";
 
 /**
  * searchCompany — Recherche DuckDuckGo via le backend
