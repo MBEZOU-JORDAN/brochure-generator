@@ -17,7 +17,7 @@ app = FastAPI(
 # En production : remplacer ["*"] par le domaine exact du frontend.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://brochure-generator-six.vercel.app/"],
+    allow_origins=["https://brochure-generator-six.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
