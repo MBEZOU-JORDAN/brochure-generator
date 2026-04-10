@@ -8,7 +8,7 @@ from app.api import search, brochure, tts, flyer
 app = FastAPI(
     title="BrochureAI Pro",
     description="Génère des brochures professionnelles à partir d'une URL ou d'un nom d'entreprise",
-    version="1.0.0",
+    version="2.0.0",
 )
 
 # ── CORS ───────────────────────────────────────────────────────────────────────
@@ -17,7 +17,12 @@ app = FastAPI(
 # En production : remplacer ["*"] par le domaine exact du frontend.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://brochure-generator-six.vercel.app"],
+    allow_origins=[
+        "https://brochure-generator-six.vercel.app/", 
+        "https://brochure-generator-six.vercel.app",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,7 +37,7 @@ app.include_router(flyer.router)
 # ── Healthcheck ────────────────────────────────────────────────────────────────
 @app.get("/health")
 def health():
-    return {"status": "ok", "version": "1.0.0"}
+    return {"status": "ok", "version": "2.0.0"}
 
 
 # ── Dev server ─────────────────────────────────────────────────────────────────
